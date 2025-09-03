@@ -21,6 +21,9 @@ target C {
     reaction(t) -> l.set {=
       printf("Toggling LED\n");
       self->led_on = !self->led_on;
-      lf_set(l.set, self->led_on);
+      printf("LED state: %d\n", self->led_on);
+      printf("l set state: %d\n", l.set);
+      lf_set(l.set, &self->led_on);
+      printf("l set state: %d\n", l.set);
     =}
   }
