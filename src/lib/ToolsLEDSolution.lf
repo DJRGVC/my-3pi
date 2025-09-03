@@ -1,0 +1,26 @@
+target C {
+    platform: {
+      name: "rp2040",
+      board: "pololu_3pi_2040_robot"
+    },
+    single-threaded: true
+  }
+
+  import LED from "LED.lf"
+
+  preamble {=
+    #include <stdio.h>
+    #include <hardware/gpio.h>
+    #include <pico/stdlib.h>
+  =}
+
+  main reactor {
+    l = new LED()
+    state led_on: bool = false 
+    timer t(0, 250 ms)
+    reaction(t) -> l.set {=
+      printf("Toggling LED\n");
+      self->led_on = !self->led_on;
+      lf_set(l.set, self->led_on);
+    =}
+  }
