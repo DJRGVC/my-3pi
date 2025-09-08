@@ -22,8 +22,8 @@ target C {
       printf("Toggling LED\n");
       self->led_on = !self->led_on;
       printf("LED state: %d\n", self->led_on);
-      printf("l set state: %d\n", l.set);
-      lf_set(l.set, &self->led_on);
-      printf("l set state: %d\n", l.set);
+      printf("l set state: %d\n", l.set->value);
+      lf_set(l.set, self->led_on);
+      printf("l set state after: %d\n", l.set->value);
     =}
   }

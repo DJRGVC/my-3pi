@@ -18,7 +18,9 @@ target C {
     =}
   
     reaction(set) {=
+      printf("LED: %d\n", set->value);
       printf("LED: %d\n", set);
-      gpio_put(PICO_DEFAULT_LED_PIN, set);
+      printf("LED: %d\n", *set);
+      gpio_put(PICO_DEFAULT_LED_PIN, set->value);
     =}
   }
